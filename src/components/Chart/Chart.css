@@ -1,0 +1,11 @@
+.card-grid-item { 
+  font-size: 12px;
+  color: black;
+  height: 30px !important;
+  width: 30px !important;
+  border-radius: 0 !important;
+}
+
+.card-grid-item:hover {
+  color: black;
+}
