@@ -4,6 +4,8 @@ import { Menu, Button } from 'semantic-ui-react'
 import Grid from '../../../components/Chart/Chart'
 import Action from '../../../components/Action/Action'
 
+import { defaultUTGRange, defaultUTG1Range, defaultUTG2Range, defaultLJRange, defaultHJRange, defaultCORange, defaultBRange } from './RFI/defaultRanges'
+
 const RFI = () => {
   const [practice, setPractice] = useState(false)
   const [activeItem, setActiveItem] = useState('UTG')
@@ -16,13 +18,13 @@ const RFI = () => {
   const [bRange, setBRange] = useState([])
 
   useEffect(() => {
-    setUtgRange(JSON.parse(localStorage.getItem("UTG")) ?? [])
-    setUtg1Range(JSON.parse(localStorage.getItem("UTG1")) ?? [])
-    setUtg2Range(JSON.parse(localStorage.getItem("UTG2")) ?? [])
-    setLjRange(JSON.parse(localStorage.getItem("LJ")) ?? [])
-    setHjRange(JSON.parse(localStorage.getItem("HJ")) ?? [])
-    setCoRange(JSON.parse(localStorage.getItem("CO")) ?? [])
-    setBRange(JSON.parse(localStorage.getItem("B")) ?? [])
+    setUtgRange(JSON.parse(localStorage.getItem("UTG")) ?? defaultUTGRange)
+    setUtg1Range(JSON.parse(localStorage.getItem("UTG1")) ?? defaultUTG1Range)
+    setUtg2Range(JSON.parse(localStorage.getItem("UTG2")) ?? defaultUTG2Range)
+    setLjRange(JSON.parse(localStorage.getItem("LJ")) ?? defaultLJRange)
+    setHjRange(JSON.parse(localStorage.getItem("HJ")) ?? defaultHJRange)
+    setCoRange(JSON.parse(localStorage.getItem("CO")) ?? defaultCORange)
+    setBRange(JSON.parse(localStorage.getItem("B")) ?? defaultBRange)
   }, [])
 
   const handleItemClick = (e, { name }) => setActiveItem(name)

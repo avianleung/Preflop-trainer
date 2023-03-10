@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ChartItem from './ChartItem'
 
 const Chart = ({ position, handRange, setHandRange }) => {
   const cardArray = [ 'A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2',]
-
 
   return (
     <div>

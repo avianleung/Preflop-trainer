@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card } from 'semantic-ui-react'
 
 import './Chart.css'
@@ -20,22 +20,6 @@ const ChartItem = ({ index1, card1, index2, card2, position, handRange, setHandR
     '2': 12
   }
 
-  const indexToValueMap = {
-    0: 'A',
-    1: 'K',
-    2: 'Q',
-    3: 'J',
-    4: 'T',
-    5: '9',
-    6: '8',
-    7: '7',
-    8: '6',
-    9: '5',
-    10: '4',
-    11: '3',
-    12: '2',
-  }
-
   const Identifier = (index1, index2) => {
     if (index1 < index2) {
       return 'o'
@@ -50,10 +34,12 @@ const ChartItem = ({ index1, card1, index2, card2, position, handRange, setHandR
     if (handRange[hand]) {
       const { [hand]: action, ...newHandRange } = handRange
       localStorage.setItem(position, JSON.stringify(newHandRange))
+      console.log(newHandRange)
       setHandRange(newHandRange)
     } else {
       const newHandRange = { ...handRange, [hand]: [] }
       localStorage.setItem(position, JSON.stringify(newHandRange))
+      console.log(newHandRange)
       setHandRange(newHandRange)
     }
   }
