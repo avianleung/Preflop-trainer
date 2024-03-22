@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PlayingCard  from '../PlayingCard/PlayingCard';
+import PokerTable from '../PokerTable/PokerTable';
 
 import { Button } from 'semantic-ui-react'
 
-const Action = ({ possibleAction, handRange }) => {
+const Action = ({ possibleAction, handRange, correct, setCorrect, setHeroPosition, getRandomPosition }) => {
   const indexToValueMap = {
     0: 'A',
     1: 'K',
@@ -31,7 +32,6 @@ const Action = ({ possibleAction, handRange }) => {
 
   const [hand, setHand] = useState([])
   const [answered, setAnswered] = useState(false)
-  const [correct, setCorrect] = useState(false)
 
   const getNewHand = () => {
     const index1 = Math.floor(Math.random() * 13)
@@ -92,12 +92,14 @@ const Action = ({ possibleAction, handRange }) => {
         setHand(getNewHand())
         setAnswered(false)
       }, 500)
+      setHeroPosition(getRandomPosition());
     } else if (!handRange[[hand[0].index, hand[1].index]] && action === 'fold') {
       setCorrect(true)
       setTimeout(() => {
         setHand(getNewHand())
         setAnswered(false)
       }, 250)
+      setHeroPosition(getRandomPosition());
     } else {
       setCorrect(false)
     }
@@ -108,16 +110,19 @@ const Action = ({ possibleAction, handRange }) => {
   }, [])
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '100px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginTop: '50px' }}>
+        {/* <div>
+          <PokerTable heroPosition="bn" dealerPositionIndex={2} />
+        </div> */}
       <div>
-        <div>
+        <div style={{ marginTop: '35px' }}>
           {hand && hand.map((card, index) => (
             <>
               <PlayingCard value={card.value} suit={card.suit} />
             </>
           ))}
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '35px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '15px' }}>
           {possibleAction.map((action, index) => (
             <Button onClick={() => validateAction(action.action)}>
               {action.text}

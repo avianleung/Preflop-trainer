@@ -39,7 +39,7 @@ const PlayingCard = ({ value, suit }) => {
       <img 
         src={cardImage} 
         alt={`${value} of ${suit}`} 
-        style={{ display: 'inline-block', height: '140px', margin: '3px' }} />
+        style={{ display: 'inline-block', height: '100px', margin: '3px' }} />
   );
 };
 

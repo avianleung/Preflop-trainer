@@ -2,25 +2,25 @@ import React, { useState } from 'react'
 import { Dropdown } from 'semantic-ui-react'
 
 import RFI from './scenarios/RFI'
+import Practice from './scenarios/Practice'
 
 const scenarioOptions = [
   {
     key: 'rfi',
-    text: 'Raise First In',
+    text: 'Charts',
     value: 'rfi',
   },
   {
-    key: 'facing-rfi',
-    text: 'Facing Raise First In',
-    value: 'facing-rfi',
+    key: 'practice',
+    text: 'Practice',
+    value: 'practice',
   }
 ]
 
-const Trainers = () => {
+const Trainers = ({ checkedPositions, setCheckedPositions, correct, setCorrect, incorrect, setIncorrect }) => {
   const [selectedOption, setSelectedOption] = useState('rfi');
 
   const handleChange = (e, { value }) => {
-    console.log(value)
     setSelectedOption(value);
   };
 
@@ -37,6 +37,18 @@ const Trainers = () => {
       { selectedOption === 'rfi' && (
         <div>
           <RFI />
+        </div>
+      )}
+      { selectedOption === 'practice' && (
+        <div>
+          <Practice 
+            checkedPositions={checkedPositions} 
+            setCheckedPositions={setCheckedPositions}
+            correct={correct}
+            setCorrect={setCorrect}
+            incorrect={incorrect}
+            setIncorrect={setIncorrect}
+          />
         </div>
       )}
     </>

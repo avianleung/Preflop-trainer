@@ -34,12 +34,10 @@ const ChartItem = ({ index1, card1, index2, card2, position, handRange, setHandR
     if (handRange[hand]) {
       const { [hand]: action, ...newHandRange } = handRange
       localStorage.setItem(position, JSON.stringify(newHandRange))
-      console.log(newHandRange)
       setHandRange(newHandRange)
     } else {
       const newHandRange = { ...handRange, [hand]: [] }
       localStorage.setItem(position, JSON.stringify(newHandRange))
-      console.log(newHandRange)
       setHandRange(newHandRange)
     }
   }

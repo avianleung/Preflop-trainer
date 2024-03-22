@@ -76,7 +76,7 @@ const RFI = () => {
 
     return (
       <div>
-        <Menu pointing secondary>
+        <Menu pointing secondary style={{ marginBottom: '30px' }}>
           {positions && positions.map((position, index) => (
             <Menu.Item
               name={position.key}
@@ -88,7 +88,7 @@ const RFI = () => {
           ))}
         </Menu>
 
-        <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '20px' }}>
+{/*         <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '20px' }}>
           <Button 
             size='tiny' 
             primary
@@ -96,7 +96,7 @@ const RFI = () => {
           >
             {practice ? 'Modify Chart' : 'Practice'}
           </Button>
-        </div>
+        </div> */}
 
         {!practice && positions && positions.map((position, index) => (
           <>
